@@ -1,3 +1,18 @@
-body {
-  background-color: aquamarine;
+body{
+  background-color: rgb(61, 108, 116);
+  content: '\f106';
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+.tituloForm{
+  padding-left: 700px;
+}
+.formCadastro{
+  color: rgba(255, 255, 255, 0.5);
+  display: grid;
+  max-width: 50%;
+  margin-left: 450px;
+  border: 2px white solid;
+  padding: 10px;
+
 }
