@@ -1,5 +1,5 @@
 body{
-  background-color: rgb(61, 108, 116);
+  background-color: rgb(77, 61, 109);
   content: '\f106';
   text-decoration: none;
   font-family: 'Times New Roman', Times, serif;
@@ -12,7 +12,7 @@ body{
   display: grid;
   max-width: 50%;
   margin-left: 450px;
-  border: 2px white solid;
+  border: 5px white solid;
   padding: 10px;
 
 }
