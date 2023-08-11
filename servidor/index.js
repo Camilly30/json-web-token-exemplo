@@ -25,11 +25,15 @@ app.use(
     secret: process.env.SECRET,
     algorithms: ["HS256"],//usa pra fazer criptografia
     getToken: req => req.cookies.token
-  }).unless({ path: ["/autenticar", "/logar", "/deslogar"] })
+  }).unless({ path: ["/autenticar", "/logar", "/deslogar","/usuarios"] })
 );
 
 app.get('/autenticar', async function(req, res){
   res.render('autenticar');
+})
+
+app.get('/usuarios', async function(req, res){
+  res.render('usuarios');
 })
 
 app.get('/', async function(req, res){
@@ -52,6 +56,9 @@ app.post('/logar', (req, res) => {
  res.status(500).json({mensagem :"Deu ruim aí brow"})
 })
 
+app.get('/usuarios', async function(req, res){
+  res.render('usuarios');
+})
 
 app.post('/deslogar', function(req, res) { //quando é para deslogar deleta o TOKEN
   res.cookie('token', null, {httpOnly:true});
