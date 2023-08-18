@@ -37,7 +37,7 @@ app.get('/usuarios', async function(req, res){
 })
 
 app.get('/', async function(req, res){
-  res.render("home")
+  res.render('home')
 })
 
 app.post('/logar', (req, res) => {
@@ -50,6 +50,7 @@ app.post('/logar', (req, res) => {
     res.cookie('token',token, {httpOnly:true});
      return res.json({
       usuario: req.body.usuario,
+      senha : req.body.senha,
       token: token
      })
   }
@@ -60,21 +61,17 @@ app.get('/usuario/cadastrar', async function(req, res){
   res.render('usuario/cadastrar');
 })
 
-app.post('/cadastrar', (req, res) => {
-  if (req.body.usuario == "Ahsoka" && req.body.senha == "123456"){
-    let id ="1";
-
-    const token = jwt.sign({id }, process.env.SECRET,{ 
-      expiresIn:3003
-    })
-    res.cookie('token',token, {httpOnly:true});
-     return res.json({
-      usuario: req.body.usuario,
-      token: token
-     })
-  }
- res.status(500).json({mensagem :"Deu ruim aí, tenta de novo"})
+app.post('/usuario/cadastrar', (req, res) => {
+  try {
+     usuario.create(req.body);
+    res.redirect('/usuarios')
+} catch (err) {
+    console.error(err);
+    res.status(500).json({mensagem :"Deu ruim aí, tenta de novo"})
+}
+  
 })
+
 
 app.post('/deslogar', function(req, res) { //quando é para deslogar deleta o TOKEN
   res.cookie('token', null, {httpOnly:true});
