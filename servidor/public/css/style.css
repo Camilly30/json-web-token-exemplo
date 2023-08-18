@@ -11,8 +11,9 @@ body{
   color: rgba(255, 255, 255, 0.5);
   display: grid;
   max-width: 50%;
-  margin-left: 450px;
+  align-items: center;
   border: 5px white solid;
   padding: 10px;
 
 }
+

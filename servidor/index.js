@@ -25,7 +25,7 @@ app.use(
     secret: process.env.SECRET,
     algorithms: ["HS256"],//usa pra fazer criptografia
     getToken: req => req.cookies.token
-  }).unless({ path: ["/autenticar", "/logar", "/deslogar","/usuarios"] })
+  }).unless({ path: ["/autenticar", "/logar", "/deslogar","/usuarios","/usuario/cadastrar"] })
 );
 
 app.get('/autenticar', async function(req, res){
@@ -56,8 +56,24 @@ app.post('/logar', (req, res) => {
  res.status(500).json({mensagem :"Deu ruim aí brow"})
 })
 
-app.get('/usuarios', async function(req, res){
-  res.render('usuarios');
+app.get('/usuario/cadastrar', async function(req, res){
+  res.render('usuario/cadastrar');
+})
+
+app.post('/cadastrar', (req, res) => {
+  if (req.body.usuario == "Ahsoka" && req.body.senha == "123456"){
+    let id ="1";
+
+    const token = jwt.sign({id }, process.env.SECRET,{ 
+      expiresIn:3003
+    })
+    res.cookie('token',token, {httpOnly:true});
+     return res.json({
+      usuario: req.body.usuario,
+      token: token
+     })
+  }
+ res.status(500).json({mensagem :"Deu ruim aí, tenta de novo"})
 })
 
 app.post('/deslogar', function(req, res) { //quando é para deslogar deleta o TOKEN

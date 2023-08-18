@@ -5,16 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  <title>Autenticação</title>
+  <title>Cadastrar Novo Usuário</title>
 </head>
 <body>
   <section name="formulario">
-  <form class="formCadastro" action="logar" method="POST">
-    <p name="tituloForm">Formulário de Acesso</p>
+
+  <form class="formCadastro" action="cadastrar" method="POST">
+    <p name="tituloForm">Formulário </p>
     <label>Usuário</label>
     <input class="caixa" type="text" name="usuario" placeholder="nome de usuário"/>
-    <label>Senha de acesso</label>
+    <label>Senha </label>
     <input class="caixa" type="password" name="senha" placeholder="senha de acesso"/>
+    <label>Confirme a senha</label>
+    <input class="caixa" type="password" name="senhaConfirm" placeholder="confirme"/>
      
     <input method="" type="submit" name="botaoEnviar"/>
     
